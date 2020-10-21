@@ -19,9 +19,7 @@ class BackendServer:
 		d = self._parse_qs(environ['QUERY_STRING'])
 		s = ""
 		for key in d.keys():
-			if len(s):
-				s += "\n"
-			s += key + "=" + d[key] 
+			s += key + "=" + d[key] + "\n"
 		data = s.encode("utf-8")
 		status = '200 OK'
 		response_headers = [
