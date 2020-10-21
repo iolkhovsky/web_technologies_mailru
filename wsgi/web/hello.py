@@ -10,8 +10,9 @@ class BackendServer:
 		options = query.split(self.sep)
 		for option in options:
 			data = option.split("=")
-			key, val = data[0], data[1]
-			out[key] = val
+			if len(data) >= 2:
+				key, val = data[0], data[1]
+				out[key] = val
 		return out
 
 	def process(self, environ, start_response):
