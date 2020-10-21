@@ -6,20 +6,13 @@ class BackendServer:
 		self.sep = "&"
 
 	def _parse_qs(self, query):
-		out = {}
-		options = query.split(self.sep)
-		for option in options:
-			data = option.split("=")
-			if len(data) >= 2:
-				key, val = data[0], data[1]
-				out[key] = val
-		return out
+		return query.split(self.sep)
 
 	def process(self, environ, start_response):
-		d = self._parse_qs(environ['QUERY_STRING'])
+		options = self._parse_qs(environ['QUERY_STRING'])
 		s = ""
-		for key in d.keys():
-			s += key + "=" + d[key] + "\n"
+		for option in options:
+			s += option + "\n"
 		data = s.encode("utf-8")
 		status = '200 OK'
 		response_headers = [
