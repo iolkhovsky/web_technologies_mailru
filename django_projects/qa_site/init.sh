@@ -13,6 +13,7 @@ echo "Nginx update"
 cd etc
 sudo cp nginx.conf /etc/nginx/nginx.conf
 sudo /etc/init.d/nginx restart
+cd ..
 
 echo "Django project"
 mkdir /home/box/web
@@ -20,7 +21,7 @@ cp -r uploads /home/box/web
 cp -r public /home/box/web
 cp hello.py /home/box/web
 cp run_hello_gunicorn.sh /home/box/web
-MYROOT = $(pwd)
+export MYROOT = $(pwd)
 cd /home/box/web
 django-admin startproject ask
 cd ask 
