@@ -21,7 +21,7 @@ cp -r uploads /home/box/web
 cp -r public /home/box/web
 cp hello.py /home/box/web
 cp run_hello_gunicorn.sh /home/box/web
-export MYROOT = $(pwd)
+export MYROOT=$(pwd)
 cd /home/box/web
 django-admin startproject ask
 cd ask 
@@ -36,3 +36,4 @@ sudo chmod +x run_hello_gunicorn.sh
 ./run_hello_gunicorn.sh && cd ask
 gunicorn ask.wsgi:application
 #python3 manage.py runserver 127.0.0.1:8000
+#sudo python3 manage.py runserver 0:8000
